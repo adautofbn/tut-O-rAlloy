@@ -41,5 +41,9 @@ fact Topic{
 	all t1: Topic, t2: Topic | t1 in t2.children <=> t2 in t1.parents // a topic is always parent of his children
 }
 
+fact Problem{
+	all p: Problem | (#(p.~problems) > 0) or (#(p.~problem) > 0) // a problem to be in our system has to be connected to a topic or a submission
+}
+
 pred show[]{}
-run show for 10 but exactly 2 User, exactly 2 Course, exactly 5 Topic
+run show for 10 but exactly 2 User, exactly 2 Course, exactly 5 Topic, exactly 3 Submission, exactly 5 Problem
